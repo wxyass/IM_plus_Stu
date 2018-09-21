@@ -1,0 +1,85 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+    defaultConfig {
+        applicationId "et.tsingtaopad"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //Android Support包
+    compile "com.android.support:appcompat-v7:$rootProject.v4Version"
+    compile "com.android.support:design:$rootProject.v4Version"
+    compile "com.android.support:cardview-v7:$rootProject.v4Version"
+    compile "com.android.support:recyclerview-v7:$rootProject.v4Version"
+    compile "com.android.support:support-v4:$rootProject.v4Version"
+    compile "com.android.support:support-v13:$rootProject.v4Version"
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    // 容联IM
+    compile(name: 'Yuntx_Android_Biaoqingmm_Plugin_v1.4.0', ext: 'aar')
+    compile(name: 'Yuntx_Android_Common_Plugin_v1.4.0', ext: 'aar')
+    compile(name: 'Yuntx_Android_Dao_Plugin_v1.4.0', ext: 'aar')
+    compile(name: 'Yuntx_Android_IM_Plugin_v1.4.0', ext: 'aar')
+    compile(name: 'Yuntx_Android_Photopicker_Plugin_v1.4.0', ext: 'aar')
+    compile 'org.jsoup:jsoup:1.10.1'
+    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
+//    compile 'com.squareup.okhttp3:logging-interceptor:3.3.0'
+//    compile('com.squareup.retrofit2:converter-gson:2.1.0') {
+//        transitive = true;
+//    }
+//    compile 'com.alibaba:fastjson:1.2.17'
+    compile 'org.greenrobot:greendao:3.1.0'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile 'com.belerweb:pinyin4j:2.5.1'
+    // compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.6.0'
+    implementation files('libs/HwPush_SDK_NOMAP_V2705.jar')
+    implementation files('libs/MiPush_SDK_Client_3_2_2.jar')
+
+
+    //网络请求依赖
+    compile 'com.squareup.okio:okio:1.13.0'
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    // JSON依赖Android版
+    compile 'com.alibaba:fastjson:1.1.57.android'
+
+}
