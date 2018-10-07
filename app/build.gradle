@@ -70,6 +70,7 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.6.1'
     compile 'com.belerweb:pinyin4j:2.5.1'
     // compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.6.0'
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
     implementation files('libs/HwPush_SDK_NOMAP_V2705.jar')
     implementation files('libs/MiPush_SDK_Client_3_2_2.jar')
 
